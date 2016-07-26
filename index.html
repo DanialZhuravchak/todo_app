@@ -52,11 +52,13 @@
             </button>
             <div>
               Зробити завдання! 
+              <button type="button" class="btn btn-default btn-lg pull-right" ng-click="cancelCreating()">Закінчити</button>
             </div>
         </div>
         <!-- EDITING --> 
         <div ng-if="shouldShowEditing()">
           Рудагувати таск
+          <button type="button" class="btn btn-default btn-lg pull-right" ng-click="cancelEditing()">Закінчити редагувати таск</button>
         </div>
     </div>
     <!-- Tasks block ends --> 
