@@ -12,81 +12,28 @@
     <link rel="stylesheet" type="text/css" href="todo.css">
   </head>
   <body  ng-controller="MainController">
-    <!-- Category block --> 
-      <div class='col-xs-6'>
-        <div class="container-fluid">
-          <div class="row">
-            <ul class="nav nav-pills nav-stacked">
-                <li ng-repeat="category in categories" ng-class="{active:isCurrentCategory(category)}">
-                  <a ng-click="setCurrentCategory(category)">
-                    {{ category.name }}
-                  </a>
-              </li>
-            </ul>
-          </div>  
-      </div>
-    </div>
-    <!-- Category block ends --> 
 
-    <!-- Tasks block --> 
-    <div class="tasks col-md-6">
-      <div ng-class="{active:isSelectedTask(task.id)}" ng-repeat="task in tasks | filter:{category: currentCategory.name}"> 
-          <button type="button" class="close" ng-click="deleteTask(task)">&times;</button>
-          <button type="button" class="btn btn-link" ng-click="setEditedTask(task);startEditing();">
-            <span class="glyphicon glyphicon-pencil"></span>
-            <a href="" target="_blank">{{ task.title }}</a>
-          </button>
-      </div>
-      <hr/>
-        <!-- CREATING --> 
-      <div ng-if="shouldShowCreating()">
-            <button type="button" class="btn btn-link" ng-click="startCreating(); ">
-              <span class="glyphicon glyphicon-plus"></span>
-              Зробити завдання
-            </button>
-            <!-- Task creating form --> 
-        <form class="create-form" ng-show="isCreating" novalidate>
-         <div class="form-group">
-            <label for="newTaskTitle">Заголовок таску:</label>
-            <input type="text" class="form-control" ng-model="task.title" placeholder="Введіть заголовок">
-          </div>
-           <div class="form-group">
-              <label for="newTaskInfo">Додадткова інформація щодо завдання:</label>
-              <input type="text" class="form-control" ng-model="task.info" placeholder="Введіть додаткову інформацію">
-            </div>
-            <button type="submit" class="btn btn-info btn-lg" ng-click="createTask(task)">Створити</button>
-            <button type="button" class="btn btn-default btn-lg pull-right" ng-click="cancelCreating()">Відмінити</button>
-        </form>
-            <!-- END TASK creating form --> 
-      </div>
-        <!-- EDITING --> 
-        <div ng-show="shouldShowEditing()">
-          <h4>Редагування {{ editedTask.title }}</h4>
-
-          <form class="edit-form" ng-submit="updateTask(editedTask)" novalidate>
-            <div class="form-group">
-              <label>Заголовок Таску:</label>
-              <input type="text" class="form-control" ng-model="editedTask.title" placeholder="Введіть заголовок">
-            </div>
-            <div class="form-group">
-                <label>Додаткова інформація до завдання:</label>
-                <input type="text" class="form-control" ng-model="editedTask.info" placeholder="Введіть додаткову інформацію">
-            </div>
-            <button type="submit" class="btn btn-info btn-lg">Зберегти</button>
-            <button type="button" class="btn btn-default btn-lg pull-right" ng-click="cancelEditing()">Відмінити</button>
-          </form>
+    <div class="container-fluid">
+      <div class="row">
+        <div class='col-sm-3 col-md-2 sidebar' ui-view="categories">
+              
+        </div>
+        <div class="col-sm-9  col-md-10  main" ui-view="tasks">
           
         </div>
-    <!-- Tasks block ends --> 
-
+      </div>
+    </div>
+    
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>  
-    <script src="lodash.min.js"></script>
-    <script type="text/javascript" src="angular.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
-    <script type="text/javascript" src="app/todo.js"></script>
+    <script src="vendor/lodash.min.js"></script>
+
+    <script src="vendor/angular.min.js"></script>
+    <script src="vendor/angular-ui-router.js"></script>
+
+    <script src="app/todo.js"></script>
     <script src="app/categories/categories.js"></script>
     <script src="app/categories/tasks/tasks.js"></script>
     <script src="app/categories/tasks/create/task-create.js"></script>
