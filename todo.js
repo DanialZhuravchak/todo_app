@@ -1,4 +1,7 @@
 angular.module('todoApp', [
+  'ui.router',
+  'categories',
+  'categories.tasks'
   ])
 
   .controller('MainController', function($scope){
