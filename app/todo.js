@@ -1,7 +1,17 @@
 angular.module('todoApp', [
+  'ui.router',
+  'categories',
+  'categories.tasks'
   ])
-
-  .controller('MainController', function($scope){
+  .config(function($stateProvider, $urlRouterProvider){
+    $stateProvider
+      .state('todo', { 
+        url: '',
+        abstract: true
+      });
+      $urlRouterProvider.otherwise('/');
+  })
+.controller('MainController', function($scope){
   $scope.categories = [
         {"id": 0, "name": "Робота"},
         {"id": 1, "name": "Навчання"},
