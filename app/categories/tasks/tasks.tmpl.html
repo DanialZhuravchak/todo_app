@@ -1,10 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title></title>
-</head>
-<body>
-	
-</body>
-</html>
+
+    <!-- Category block ends --> 
+
+    <!-- Tasks block --> 
+    <div class="tasks col-md-6">
+      <div ng-class="{active:isSelectedTask(task.id)}" ng-repeat="task in tasks | filter:{category: currentCategory.name}"> 
+          <button type="button" class="close" ng-click="deleteTask(task)">&times;</button>
+          <button type="button" class="btn btn-link" ng-click="setEditedTask(task);startEditing();">
+            <span class="glyphicon glyphicon-pencil"></span>
+            <a href="" target="_blank">{{ task.title }}</a>
+          </button>
+      </div>
+      <hr/>
+        <!-- CREATING --> 
+      <div ng-if="shouldShowCreating()">
+            <button type="button" class="btn btn-link" ng-click="startCreating(); ">
+              <span class="glyphicon glyphicon-plus"></span>
+              Зробити завдання
+            </button>
+            <!-- Task creating form --> 
+        <form class="create-form" ng-show="isCreating" novalidate>
+         <div class="form-group">
+            <label for="newTaskTitle">Заголовок таску:</label>
+            <input type="text" class="form-control" ng-model="task.title" placeholder="Введіть заголовок">
+          </div>
+           <div class="form-group">
+              <label for="newTaskInfo">Додадткова інформація щодо завдання:</label>
+              <input type="text" class="form-control" ng-model="task.info" placeholder="Введіть додаткову інформацію">
+            </div>
+            <button type="submit" class="btn btn-info btn-lg" ng-click="createTask(task)">Створити</button>
+            <button type="button" class="btn btn-default btn-lg pull-right" ng-click="cancelCreating()">Відмінити</button>
+        </form>
+            <!-- END TASK creating form --> 
+      </div>
+        <!-- EDITING --> 
+        <div ng-show="shouldShowEditing()">
+          <h4>Редагування {{ editedTask.title }}</h4>
+
+          <form class="edit-form" ng-submit="updateTask(editedTask)" novalidate>
+            <div class="form-group">
+              <label>Заголовок Таску:</label>
+              <input type="text" class="form-control" ng-model="editedTask.title" placeholder="Введіть заголовок">
+            </div>
+            <div class="form-group">
+                <label>Додаткова інформація до завдання:</label>
+                <input type="text" class="form-control" ng-model="editedTask.info" placeholder="Введіть додаткову інформацію">
+            </div>
+            <button type="submit" class="btn btn-info btn-lg">Зберегти</button>
+            <button type="button" class="btn btn-default btn-lg pull-right" ng-click="cancelEditing()">Відмінити</button>
+          </form>
+          
+        </div>
+    <!-- Tasks block ends --> 
