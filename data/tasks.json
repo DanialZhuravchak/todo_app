@@ -1,0 +1,7 @@
+[
+   {"id": 0,"title":"Зробити туду list на ангулярі.", "category":"Work", "info":"Просто додаткова інфа"},
+   {"id": 1,"title":"Написати lean", "category":"Startup", "info":"Просто додаткова інфа"},
+   {"id": 2,"title":"Купити зошит", "category":"Uni", "info":"Просто додаткова інфа"},
+   {"id": 3,"title":"Вивчити angular2", "category":"Education", "info":"Просто додаткова інфа"},
+   {"id": 4,"title":"Написати апу на джанго", "category":"Work", "info":"Просто додаткова інфа"}
+]
