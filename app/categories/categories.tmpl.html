@@ -1,5 +1,5 @@
 <ul class="nav nav-pills nav-stacked">
-  <li ng-repeat="category in categories" ng-class="{'active':isCurrentCategory(category)}">
-    <a href="#" ng-click="setCurrentCategory(category)">{{ category.name }}</a>
+  <li ng-repeat="category in categoriesListCtrl. categories" ng-class="{'active':isCurrentCategory(category)}">
+    <a ui-sref="todo.categories.tasks({category:category.name})">{{ category.name }}</a>
   </li>
 </ul>

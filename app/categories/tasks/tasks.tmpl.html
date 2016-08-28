@@ -1,9 +1,6 @@
-
-    <!-- Category block ends --> 
-
-    <!-- Tasks block --> 
-    <div class="tasks col-md-6">
-      <div ng-class="{active:isSelectedTask(task.id)}" ng-repeat="task in tasks | filter:{category: currentCategory.name}"> 
+  <h1>{{  tasksListCtrl.currentCatgoryName }}</h1> 
+   <div class="tasks col-md-6">
+      <div ng-class="{active:isSelectedTask(task.id)}" ng-repeat="task in tasksListCtrl.tasks | filter:{category: currentCategory.name}"> 
           <button type="button" class="close" ng-click="deleteTask(task)">&times;</button>
           <button type="button" class="btn btn-link" ng-click="setEditedTask(task);startEditing();">
             <span class="glyphicon glyphicon-pencil"></span>

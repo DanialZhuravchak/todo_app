@@ -11,21 +11,7 @@ angular.module('todoApp', [
       });
       $urlRouterProvider.otherwise('/');
   })
-.controller('MainController', function($scope){
-  $scope.categories = [
-        {"id": 0, "name": "Робота"},
-        {"id": 1, "name": "Навчання"},
-        {"id": 2, "name": "Стартап"},
-        {"id": 3, "name": "Політех"}, 
-      ];
-  $scope.tasks = [
-    {"id": 0,"title":"Зробити туду list на ангулярі.", "category":"Робота", "info":"Просто додаткова інфа"},
-    {"id": 1,"title":"Написати lean", "category":"Стартап", "info":"Просто додаткова інфа"},
-    {"id": 2,"title":"Купити зошит", "category":"Політех", "info":"Просто додаткова інфа"},
-    {"id": 3,"title":"Вивчити angular2", "category":"Навчання", "info":"Просто додаткова інфа"},
-    {"id": 4,"title":"Написати апу на джанго", "category":"Робота", "info":"Просто додаткова інфа"}
-  ];
-
+.controller('MainController', function($scope, $state){
   $scope.isCreating = false;
   $scope.isEditing = false;
   $scope.currentCategory = null;
@@ -37,6 +23,8 @@ angular.module('todoApp', [
 
   function setCurrentCategory(category) { 
     $scope.currentCategory = category;
+
+    $state.go('todo.categories.tasks', {category:category.name});
 
     cancelCreating();
     cancelEditing();
